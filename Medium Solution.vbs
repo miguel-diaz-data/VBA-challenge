@@ -27,8 +27,17 @@ Sub EasySolution():
                 'assuming the sheet is sorted by ticker,then if current ticker is the last one, put totalvolume on to summary table
                 Cells(TickerIndex, 9).Value = Cells(i, 1).Value
                 Cells(TickerIndex, 10).Value = Cells(i, 6).Value - OpeningPrice
-                Cells(TickerIndex, 11).Value = Cells(TickerIndex, 10).Value / OpeningPrice
+                
+                Cells(TickerIndex, 11).Value = FormatPercent(Cells(TickerIndex, 10).Value / OpeningPrice)
                 Cells(TickerIndex, 12).Value = TotalVolume
+                
+                'highlights positive and negative changes of stock price via green / red highlighting
+                If Cells(TickerIndex, 10).Value > 0 Then
+                    Cells(TickerIndex, 10).Interior.ColorIndex = 4
+                ElseIf Cells(TickerIndex, 10).Value < 0 Then
+                    Cells(TickerIndex, 10).Interior.ColorIndex = 3
+                
+                End If
                 
                 'prepared variables for next iteration with a new ticker
                 TotalVolume = 0

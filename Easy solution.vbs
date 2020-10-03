@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Module11"
 Sub EasySolution():
     
     'loop through all stocks in wb and add up all the stock volume of each ticker
